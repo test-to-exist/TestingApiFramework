@@ -19,7 +19,7 @@ public class BookingApiTests {
         ResponseEntity<String> response = bookingService.getBooking(1);
         System.out.println(response.getStatusCode());
         ObjectMapper mapper = new ObjectMapper();
-        Booking booking = mapper.readValue(response.getBody(),Booking.class);
+        Booking booking = mapper.readValue(response.getBody(), Booking.class);
         System.out.println(booking.getFirstname());
         assert 1 == 1;
     }
