@@ -17,7 +17,7 @@ import java.util.Collections;
 
 public class BookingService {
 
-private final RestTemplate restTemplate;
+private final RestTemplate restTemplate ;
 
     public BookingService(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();

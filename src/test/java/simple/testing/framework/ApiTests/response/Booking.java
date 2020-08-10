@@ -54,15 +54,6 @@ public class Booking implements Serializable {
 
     private BookingDates bookingdates;
 
-    public String getAdditionalneeds() {
-        return additionalneeds;
-    }
-
-    public void setAdditionalneeds(String additionalneeds) {
-        this.additionalneeds = additionalneeds;
-    }
-
-    private String additionalneeds;
 
     public Booking() {
     }
