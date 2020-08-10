@@ -6,6 +6,9 @@ public class BookingDates implements Serializable {
     private String checkout;
     private String checkin;
 
+    public BookingDates() {
+    }
+
     public BookingDates(String checkin, String checkout) {
         this.checkout = checkout;
         this.checkin = checkin;

@@ -25,7 +25,7 @@ public class AuthService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         AuthPayload payload = new AuthPayload(username, password);
-        HttpEntity<AuthPayload> entity = new HttpEntity<AuthPayload>(payload, headers);
+        HttpEntity<AuthPayload> entity = new HttpEntity<>(payload, headers);
         ResponseEntity<AuthResponse> response = restTemplate.exchange("https://restful-booker.herokuapp.com/auth", HttpMethod.POST,
                 entity, AuthResponse.class);
         return response;

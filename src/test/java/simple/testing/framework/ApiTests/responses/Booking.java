@@ -32,6 +32,9 @@ public class Booking implements Serializable {
         this.totalprice = totalprice;
     }
 
+    public Booking() {
+    }
+
     private int totalprice;
 
     public boolean isDepositpaid() {

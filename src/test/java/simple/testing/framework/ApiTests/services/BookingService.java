@@ -11,10 +11,10 @@ import simple.testing.framework.ApiTests.responses.BookingCreated;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
-
-// https://www.mwtestconsultancy.co.uk/booking
 
 @Service
 public class BookingService {
@@ -22,22 +22,21 @@ public class BookingService {
     private final RestTemplate restTemplate;
 
     public BookingService(RestTemplateBuilder restTemplateBuilder) {
-
         this.restTemplate = restTemplateBuilder.setConnectTimeout(Duration.ofSeconds(30))
                 .setReadTimeout(Duration.ofSeconds(30)).build();
     }
 
-    public ResponseEntity<BookingCreated> getBooking(int id) {
+    public ResponseEntity<String> getBooking(int id) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        ResponseEntity<BookingCreated> response = restTemplate.exchange(
-                "https://restful-booker.herokuapp.com/booking/" + id, HttpMethod.GET, HttpEntity.EMPTY,
-                BookingCreated.class);
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        ResponseEntity<String> response = restTemplate.exchange("https://restful-booker.herokuapp.com/booking/" + id,
+                HttpMethod.GET, entity, String.class);
         return response;
     }
 
-    public ResponseEntity<Booking> createBooking() {
+    public ResponseEntity<String> createBooking() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
@@ -46,9 +45,10 @@ public class BookingService {
                         .format(DateTimeFormatter.BASIC_ISO_DATE),
                 LocalDateTime.of(2020, 1, 7, 12, 0)
                         .format(DateTimeFormatter.BASIC_ISO_DATE)));
-        HttpEntity entity = new HttpEntity<Booking>(booking, headers);
-        ResponseEntity<Booking> response = restTemplate.exchange("https://restful-booker.herokuapp.com/booking",
-                HttpMethod.POST, entity, Booking.class);
+
+        HttpEntity entity = new HttpEntity<>(booking, headers);
+        ResponseEntity<String> response = restTemplate.exchange("https://restful-booker.herokuapp.com/booking",
+                HttpMethod.POST, entity, String.class);
         return response;
     }
 
