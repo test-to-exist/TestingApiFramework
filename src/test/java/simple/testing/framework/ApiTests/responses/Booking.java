@@ -1,4 +1,4 @@
-package simple.testing.framework.ApiTests.response;
+package simple.testing.framework.ApiTests.responses;
 
 import java.io.Serializable;
 
@@ -55,6 +55,11 @@ public class Booking implements Serializable {
     private BookingDates bookingdates;
 
 
-    public Booking() {
+    public Booking(String firstname, String lastname, int totalprice, boolean depositpaid, BookingDates bookingdates) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.totalprice = totalprice;
+        this.depositpaid = depositpaid;
+        this.bookingdates = bookingdates;
     }
 }

@@ -1,10 +1,10 @@
-package simple.testing.framework.ApiTests.response;
+package simple.testing.framework.ApiTests.responses;
 
 
 import java.io.Serializable;
 
 
-public class BookingResponse implements Serializable {
+public class BookingCreated implements Serializable {
 
     private int bookingid;
 

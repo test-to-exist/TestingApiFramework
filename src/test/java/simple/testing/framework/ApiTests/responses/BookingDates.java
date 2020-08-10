@@ -1,10 +1,15 @@
-package simple.testing.framework.ApiTests.response;
+package simple.testing.framework.ApiTests.responses;
 
 import java.io.Serializable;
 
 public class BookingDates implements Serializable {
     private String checkout;
     private String checkin;
+
+    public BookingDates(String checkin, String checkout) {
+        this.checkout = checkout;
+        this.checkin = checkin;
+    }
 
     public String getCheckin() {
         return checkin;

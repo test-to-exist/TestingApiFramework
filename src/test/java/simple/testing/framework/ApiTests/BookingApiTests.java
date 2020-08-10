@@ -6,16 +6,19 @@ import org.junit.Test;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import simple.testing.framework.ApiTests.services.BookingService;
 
-import java.time.Duration;
-
 public class BookingApiTests {
 
     private static BookingService bookingService;
 
     @Test
-    public void InitialTest() {
-        bookingService.getBooking(1);
+    public void initialTest() {
+        var response = bookingService.getBooking(1);
         assert 1 == 1;
+    }
+
+    @Test
+    public void createBooking() {
+        var response = bookingService.createBooking();
     }
 
     @BeforeClass
