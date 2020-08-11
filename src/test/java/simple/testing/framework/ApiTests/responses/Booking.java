@@ -1,8 +1,6 @@
 package simple.testing.framework.ApiTests.responses;
 
-import java.io.Serializable;
-
-public class Booking implements Serializable {
+public class Booking {
 
     public String getFirstname() {
         return firstname;

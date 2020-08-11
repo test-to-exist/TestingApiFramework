@@ -1,8 +1,6 @@
 package simple.testing.framework.ApiTests.responses;
 
-import java.io.Serializable;
-
-public class BookingDates implements Serializable {
+public class BookingDates {
     private String checkout;
     private String checkin;
 

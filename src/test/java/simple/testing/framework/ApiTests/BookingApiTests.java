@@ -49,15 +49,15 @@ public class BookingApiTests {
         ResponseEntity<String> authResponse = authService.getToken("admin", "password123");
         assert authResponse.getStatusCode() == HttpStatus.OK;
         ObjectMapper mapper = new ObjectMapper();
-        AuthResponse authResponseObject = mapper.readValue(authResponse.getBody(), AuthResponse.class);
-        System.out.println(authResponseObject.getToken());
+        AuthResponse authResponseObj = mapper.readValue(authResponse.getBody(), AuthResponse.class);
+        System.out.println(authResponseObj.getToken());
 
         ResponseEntity<String> response = bookingService.createBooking();
         assert response.getStatusCode() == HttpStatus.OK;
         BookingCreated bc = mapper.readValue(response.getBody(), BookingCreated.class);
 
         ResponseEntity<String> delResponse = bookingService.deleteBooking(bc.getBookingid(),
-                authResponseObject.getToken());
+                authResponseObj.getToken());
         assert delResponse.getStatusCode() == HttpStatus.CREATED;
     }
 

@@ -1,8 +1,6 @@
 package simple.testing.framework.ApiTests.responses;
 
-import java.io.Serializable;
-
-public class AuthResponse implements Serializable {
+public class AuthResponse {
     private String token;
 
     public String getToken() {
