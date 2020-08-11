@@ -5,7 +5,6 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import simple.testing.framework.ApiTests.payloads.AuthPayload;
-import simple.testing.framework.ApiTests.responses.AuthResponse;
 
 import java.time.Duration;
 import java.util.Collections;

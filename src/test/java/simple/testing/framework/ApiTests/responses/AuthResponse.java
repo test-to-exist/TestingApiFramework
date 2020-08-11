@@ -1,7 +1,5 @@
 package simple.testing.framework.ApiTests.responses;
 
-import org.springframework.stereotype.Service;
-
 import java.io.Serializable;
 
 public class AuthResponse implements Serializable {

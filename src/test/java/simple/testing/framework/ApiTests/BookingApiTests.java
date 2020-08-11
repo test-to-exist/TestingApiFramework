@@ -20,9 +20,9 @@ public class BookingApiTests {
     private static AuthService authService;
 
     @Test
-    public void initialTest() throws JsonProcessingException {
+    public void getBooking() throws JsonProcessingException {
         ResponseEntity<String> response = bookingService.getBooking(1);
-        System.out.println(response.getStatusCode());
+        assert response.getStatusCode() == HttpStatus.OK;
         ObjectMapper mapper = new ObjectMapper();
         Booking booking = mapper.readValue(response.getBody(), Booking.class);
         System.out.println(booking.getFirstname());
@@ -31,13 +31,17 @@ public class BookingApiTests {
 
     @Test
     public void createBooking() throws JsonProcessingException {
-
-        var response = bookingService.createBooking();
+        ResponseEntity<String> response = bookingService.createBooking();
         assert response.getStatusCode() == HttpStatus.OK;
         ObjectMapper mapper = new ObjectMapper();
         BookingCreated bc = mapper.readValue(response.getBody(), BookingCreated.class);
         assert bc.getBooking().getFirstname().equals("Jan");
         assert bc.getBooking().getLastname().equals("Kovalsky");
+        ResponseEntity<String> getResponse = bookingService.getBooking(bc.getBookingid());
+        assert getResponse.getStatusCode() == HttpStatus.OK;
+        Booking booking = mapper.readValue(getResponse.getBody(),Booking.class);
+        assert booking.getFirstname().equals("Jan");
+        assert booking.getLastname().equals("Kovalsky");
     }
 
     @Test
@@ -48,16 +52,17 @@ public class BookingApiTests {
         AuthResponse authResponseObject = mapper.readValue(authResponse.getBody(), AuthResponse.class);
         System.out.println(authResponseObject.getToken());
 
-        var response = bookingService.createBooking();
+        ResponseEntity<String> response = bookingService.createBooking();
         assert response.getStatusCode() == HttpStatus.OK;
         BookingCreated bc = mapper.readValue(response.getBody(), BookingCreated.class);
 
-        var delResponse = bookingService.deleteBooking(bc.getBookingid(), authResponseObject.getToken());
+        ResponseEntity<String> delResponse = bookingService.deleteBooking(bc.getBookingid(),
+                authResponseObject.getToken());
         assert delResponse.getStatusCode() == HttpStatus.CREATED;
     }
 
     @BeforeClass
-    public static void beforeClass() throws Exception {
+    public static void beforeClass() {
         authService = new AuthService(new RestTemplateBuilder());
         bookingService = new BookingService(new RestTemplateBuilder());
     }

@@ -32,9 +32,6 @@ public class Booking implements Serializable {
         this.totalprice = totalprice;
     }
 
-    public Booking() {
-    }
-
     private int totalprice;
 
     public boolean isDepositpaid() {
@@ -57,12 +54,25 @@ public class Booking implements Serializable {
 
     private BookingDates bookingdates;
 
+    private String additionalneeds;
 
-    public Booking(String firstname, String lastname, int totalprice, boolean depositpaid, BookingDates bookingdates) {
+    public String getAdditionalneeds() {
+        return additionalneeds;
+    }
+
+    public Booking() {
+    }
+
+    public Booking(String firstname, String lastname, int totalprice, boolean depositpaid, BookingDates bookingdates, String additionalneeds) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;
         this.depositpaid = depositpaid;
         this.bookingdates = bookingdates;
+        this.additionalneeds = additionalneeds;
+    }
+
+    public void setAdditionalneeds(String additionalneeds) {
+        this.additionalneeds = additionalneeds;
     }
 }

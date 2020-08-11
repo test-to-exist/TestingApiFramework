@@ -4,17 +4,12 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import simple.testing.framework.ApiTests.responses.Booking;
+import simple.testing.framework.ApiTests.payloads.BookingPayload;
 import simple.testing.framework.ApiTests.responses.BookingDates;
-import simple.testing.framework.ApiTests.responses.BookingCreated;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 
 @Service
@@ -41,9 +36,9 @@ public class BookingService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        Booking booking = new Booking("Jan", "Kovalsky", 99, true, new BookingDates(
+        BookingPayload booking = new BookingPayload("Jan", "Kovalsky", 99, true, new BookingDates(
                 LocalDate.of(2020, 1, 1).toString(),
-                LocalDate.of(2020, 1, 7).toString()));
+                LocalDate.of(2020, 1, 7).toString()), "No need at all");
 
         HttpEntity entity = new HttpEntity<>(booking, headers);
         ResponseEntity<String> response = restTemplate.exchange("https://restful-booker.herokuapp.com/booking",
@@ -55,8 +50,6 @@ public class BookingService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-//        headers.add("Authorisation", "Basic " + token);
-//        headers.add("Authorisation", token);
         headers.add("Cookie", "token=" + token);
         HttpEntity entity = new HttpEntity<>(headers);
         ResponseEntity<String> response = restTemplate.exchange("https://restful-booker.herokuapp.com/booking/" + id,
