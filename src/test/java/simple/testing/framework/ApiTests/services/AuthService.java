@@ -20,14 +20,14 @@ public class AuthService {
                 .setReadTimeout(Duration.ofSeconds(30)).build();
     }
 
-    public ResponseEntity<AuthResponse> getToken(String username, String password) {
+    public ResponseEntity<String> getToken(String username, String password) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         AuthPayload payload = new AuthPayload(username, password);
         HttpEntity<AuthPayload> entity = new HttpEntity<>(payload, headers);
-        ResponseEntity<AuthResponse> response = restTemplate.exchange("https://restful-booker.herokuapp.com/auth", HttpMethod.POST,
-                entity, AuthResponse.class);
+        ResponseEntity<String> response = restTemplate.exchange("https://restful-booker.herokuapp.com/auth", HttpMethod.POST,
+                entity, String.class);
         return response;
     }
 

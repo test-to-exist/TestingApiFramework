@@ -9,6 +9,7 @@ import simple.testing.framework.ApiTests.responses.BookingDates;
 import simple.testing.framework.ApiTests.responses.BookingCreated;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -41,14 +42,25 @@ public class BookingService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         Booking booking = new Booking("Jan", "Kovalsky", 99, true, new BookingDates(
-                LocalDateTime.of(2020, 1, 1, 12, 0)
-                        .format(DateTimeFormatter.BASIC_ISO_DATE),
-                LocalDateTime.of(2020, 1, 7, 12, 0)
-                        .format(DateTimeFormatter.BASIC_ISO_DATE)));
+                LocalDate.of(2020, 1, 1).toString(),
+                LocalDate.of(2020, 1, 7).toString()));
 
         HttpEntity entity = new HttpEntity<>(booking, headers);
         ResponseEntity<String> response = restTemplate.exchange("https://restful-booker.herokuapp.com/booking",
                 HttpMethod.POST, entity, String.class);
+        return response;
+    }
+
+    public ResponseEntity<String> deleteBooking(int id, String token) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+//        headers.add("Authorisation", "Basic " + token);
+//        headers.add("Authorisation", token);
+        headers.add("Cookie", "token=" + token);
+        HttpEntity entity = new HttpEntity<>(headers);
+        ResponseEntity<String> response = restTemplate.exchange("https://restful-booker.herokuapp.com/booking/" + id,
+                HttpMethod.DELETE, entity, String.class);
         return response;
     }
 
