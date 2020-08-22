@@ -38,7 +38,7 @@ public class BookingService {
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         BookingPayload booking = new BookingPayload("Jan", "Kovalsky", 99, true, new BookingDates(
                 LocalDate.of(2020, 1, 1).toString(),
-                LocalDate.of(2020, 1, 7).toString()), "No need at all");
+                LocalDate.of(2020, 1, 7).toString()), "no additional needs");
 
         HttpEntity entity = new HttpEntity<>(booking, headers);
         ResponseEntity<String> response = restTemplate.exchange("https://restful-booker.herokuapp.com/booking",

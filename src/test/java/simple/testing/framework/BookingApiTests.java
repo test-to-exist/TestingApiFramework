@@ -23,10 +23,6 @@ public class BookingApiTests {
     public void getBooking() throws JsonProcessingException {
         ResponseEntity<String> response = bookingService.getBooking(1);
         assert response.getStatusCode() == HttpStatus.OK;
-        ObjectMapper mapper = new ObjectMapper();
-        Booking booking = mapper.readValue(response.getBody(), Booking.class);
-        System.out.println(booking.getFirstname());
-        assert response.getStatusCode() == HttpStatus.OK;
     }
 
     @Test
@@ -46,7 +42,7 @@ public class BookingApiTests {
 
     @Test
     public void deleteBooking() throws JsonProcessingException {
-        ResponseEntity<String> authResponse = authService.getToken("admin", "password123");
+        ResponseEntity<String> authResponse = authService.getToken();
         assert authResponse.getStatusCode() == HttpStatus.OK;
         ObjectMapper mapper = new ObjectMapper();
         AuthResponse authResponseObj = mapper.readValue(authResponse.getBody(), AuthResponse.class);
@@ -56,9 +52,9 @@ public class BookingApiTests {
         assert response.getStatusCode() == HttpStatus.OK;
         BookingCreated bc = mapper.readValue(response.getBody(), BookingCreated.class);
 
-        ResponseEntity<String> delResponse = bookingService.deleteBooking(bc.getBookingid(),
+        ResponseEntity<String> deleteResponse = bookingService.deleteBooking(bc.getBookingid(),
                 authResponseObj.getToken());
-        assert delResponse.getStatusCode() == HttpStatus.CREATED;
+        assert deleteResponse.getStatusCode() == HttpStatus.CREATED;
     }
 
     @BeforeClass
