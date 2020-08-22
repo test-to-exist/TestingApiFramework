@@ -1,6 +1,9 @@
-package simple.testing.framework.ApiTests.responses;
+package simple.testing.framework.payloads;
 
-public class Booking {
+
+import simple.testing.framework.common.BookingDates;
+
+public class BookingPayload {
 
     public String getFirstname() {
         return firstname;
@@ -58,10 +61,10 @@ public class Booking {
         return additionalneeds;
     }
 
-    public Booking() {
+    public BookingPayload() {
     }
 
-    public Booking(String firstname, String lastname, int totalprice, boolean depositpaid, BookingDates bookingdates, String additionalneeds) {
+    public BookingPayload(String firstname, String lastname, int totalprice, boolean depositpaid, BookingDates bookingdates, String additionalneeds) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;

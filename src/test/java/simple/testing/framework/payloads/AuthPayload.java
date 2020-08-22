@@ -1,19 +1,11 @@
-package simple.testing.framework.ApiTests.payloads;
+package simple.testing.framework.payloads;
 
 public class AuthPayload {
-    private String username;
-    private String password;
+    public AuthPayload() {
+    }
 
     public AuthPayload(String username, String password) {
         this.username = username;
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -24,4 +16,15 @@ public class AuthPayload {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    private String username;
+    private String password;
 }

@@ -1,4 +1,4 @@
-package simple.testing.framework.ApiTests;
+package simple.testing.framework;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -8,11 +8,11 @@ import org.junit.Test;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import simple.testing.framework.ApiTests.responses.AuthResponse;
-import simple.testing.framework.ApiTests.responses.Booking;
-import simple.testing.framework.ApiTests.responses.BookingCreated;
-import simple.testing.framework.ApiTests.services.AuthService;
-import simple.testing.framework.ApiTests.services.BookingService;
+import simple.testing.framework.responses.AuthResponse;
+import simple.testing.framework.responses.Booking;
+import simple.testing.framework.responses.BookingCreated;
+import simple.testing.framework.services.AuthService;
+import simple.testing.framework.services.BookingService;
 
 public class BookingApiTests {
 

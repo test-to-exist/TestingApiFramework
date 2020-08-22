@@ -1,4 +1,4 @@
-package simple.testing.framework.ApiTests.responses;
+package simple.testing.framework.common;
 
 public class BookingDates {
     private String checkout;

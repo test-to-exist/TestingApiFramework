@@ -1,11 +1,11 @@
-package simple.testing.framework.ApiTests.services;
+package simple.testing.framework.services;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import simple.testing.framework.ApiTests.payloads.BookingPayload;
-import simple.testing.framework.ApiTests.responses.BookingDates;
+import simple.testing.framework.payloads.BookingPayload;
+import simple.testing.framework.common.BookingDates;
 
 import java.time.Duration;
 import java.time.LocalDate;

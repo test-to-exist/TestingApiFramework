@@ -1,10 +1,10 @@
-package simple.testing.framework.ApiTests.services;
+package simple.testing.framework.services;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import simple.testing.framework.ApiTests.payloads.AuthPayload;
+import simple.testing.framework.payloads.AuthPayload;
 
 import java.time.Duration;
 import java.util.Collections;
